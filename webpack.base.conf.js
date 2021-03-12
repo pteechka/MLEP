@@ -1,4 +1,5 @@
 const path = require('path');
+const walkSync = require('walk-sync')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -8,6 +9,11 @@ const PATHS = {
   dist: path.join(__dirname, './dist'),
   assets: 'assets/'
 }
+
+//  Collect all *.pug files from pug/pages directory
+const PAGES = walkSync(`${PATHS.src}/pug/pages/`, { directories: false })
+              .filter(fileName => fileName.endsWith('.pug'))
+
 
 module.exports = {
     externals: {
@@ -27,7 +33,7 @@ module.exports = {
           exclude: '/node_modules/'
         },
         {
-          test: /\.(png|jpe?g|gif|svg|webp)$/i,
+          test: /\.(png|jpe?g|gif|svg|webp)$/,
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]'
@@ -47,7 +53,7 @@ module.exports = {
               options: { 
                 sourceMap: true, 
                 postcssOptions: {
-                  config: "./src/js/postcss.config.js"
+                  config: "./postcss.config.js"
                 }
               }
             }, 
@@ -71,7 +77,7 @@ module.exports = {
               options: {
                 sourceMap: true,
                 postcssOptions: {
-                  config: "./src/js/postcss.config.js" 
+                  config: "./postcss.config.js" 
                 }              
               }
             }
@@ -87,33 +93,18 @@ module.exports = {
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: 'src/pug/pages/index/index.pug'
-      }),
-      new HtmlWebpackPlugin({
-        filename: 'assets/UIKit/Colors_Type.html',
-        template: 'src/pug/pages/UIKit/Colors_Type.pug'
-      }),
-      new HtmlWebpackPlugin({
-        filename: 'assets/UIKit/Form_Elements.html',
-        template: 'src/pug/pages/UIKit/Form_Elements.pug'
-      }),
-      new HtmlWebpackPlugin({
-        filename: 'assets/UIKit/Cards.html',
-        template: 'src/pug/pages/UIKit/Cards.pug'
-      }),
-      new HtmlWebpackPlugin({
-        filename: 'assets/UIKit/Headers_Footers.html',
-        template: 'src/pug/pages/UIKit/Headers_Footers.pug'
-      }),
+      ...PAGES.map(page => new HtmlWebpackPlugin({
+        template: `${PATHS.src}/pug/pages/${page}`,
+        filename: `./${page.replace(/\.pug/, '.html')}`
+      })),
       new MiniCssExtractPlugin({
         filename: `${PATHS.assets}css/[name].css`
       }),
-      new CopyWebpackPlugin({
-        patterns: [
-        {from: `${PATHS.src}/img/`, to: `${PATHS.assets}img/`}
-        ]
-      })
+      // new CopyWebpackPlugin({
+      //   patterns: [
+      //   {from: `${PATHS.src}/img/`, to: `${PATHS.assets}img/`}
+      //   ]
+      // }),
+      
     ]
   };
