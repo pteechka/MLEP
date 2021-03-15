@@ -1,0 +1,34 @@
+$DarkShade-100: #1F2041ff;
+$DarkShade-75: #1f2041BF;
+$DarkShade-50: #1f204180;
+$DarkShade-25: #1f204140;
+$DarkShade-5: #1f20410D;
+$Purple: #BC9CFF;
+$Green: #6FCF97;
+.color-cards {
+    padding-top: 27px;
+    padding-left: 10px;
+}
+.types {
+    max-width: 450px;
+    padding-top: 29px;
+}
+.types-row {
+    display: flex;
+    padding-top: 2px;
+    padding-bottom: 47px;
+}
+.types__tag {
+    font-weight: 400;
+    color: $DarkShade-25;
+}
+.types__legend {
+    padding-left: 29px;
+    color: $DarkShade-100;
+}
+.types__legend_shade {
+    font-weight: 400;
+    color: $DarkShade-75;
+    padding-left: 27px;
+    max-width: 310px;
+}

@@ -3,16 +3,24 @@ extends ../../layout/UIKit/UIKit.pug
 block content
     .color-cards
         include ../../components/Color-card/color-card.pug
-        +colorCard('Dark Shade 100%', '#1F2041')
-        +colorCard('Dark Shade 75%', '#1F2041')
-        +colorCard('Dark Shade 50%', '#1F2041')
-        +colorCard('Dark Shade 25%', '#1F2041')
-        +colorCard('Dark Shade 5%', '#1F2041')
-        +colorCard('Purple', '#BC9CFF')
-        +colorCard('Green', '#6FCF97')
+        +colorCard('Dark Shade 100%', '#1F2041','#1F2041FF')
+        +colorCard('Dark Shade 75%', '#1F2041','#1F2041BF')
+        +colorCard('Dark Shade 50%', '#1F2041','#1F204180')
+        +colorCard('Dark Shade 25%', '#1F2041','#1F204140')
+        +colorCard('Dark Shade 5%', '#1F2041','#1F20410D')
+        +colorCard('Purple', '#BC9CFF', '#BC9CFF')
+        +colorCard('Green', '#6FCF97', '#6FCF97')
         
     .types
-        h1.types_h1 This one is the sub-section or widget title
-        h2.types_h2 Next one is the item title inside widgets
-        h3.types_h3 This is a label or CTA text
-        p.types_p This is the body text which is used for most of the design, like paragraphs, lists, etc.
+        .types-row
+            h1.types__tag H1
+            h1.types__legend This one is the sub-section or widget title
+        .types-row
+            h2.types__tag H2
+            h2.types__legend Next one is the item title inside widgets
+        .types-row
+            h3.types__tag H3
+            h3.types__legend This is a label or CTA text
+        .types-row
+            p.types__tag Body
+            p.types__legend_shade This is the body text which is used for most of the design, like paragraphs, lists, etc.

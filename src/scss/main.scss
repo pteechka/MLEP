@@ -1,3 +1,58 @@
+@import "../css/main.css";
+@import "../pug/pages/UIKit/UIKit_Colors_Type.scss";
+
+@import "../pug/components/Logo/logo_shade.scss";
+
+@import "../fonts/fonts.scss";
+@import "./colors.scss";
+*,*::after,*::before {
+    box-sizing: border-box;
+}
+p {
+    line-height: 1.715em;
+    margin: 0px;
+}
+h1,h2,h3,h4,h5,h6 {
+    margin: 0px;
+}
+h1 {
+    font-size: 1.5rem;
+    line-height: 1.2185em;
+    padding-left: 5px;
+    padding-top: 2px;
+}
+h2 {
+    font-size: 1.188rem;
+    line-height: 1.2185em;
+    padding-left: 7px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+}
+h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    line-height: 1.22em;
+    padding-left: 17px;
+    padding-top: 4px;
+}
+html {
+    width: 100%;
+}
 body {
-    color: red;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-size: 0.875rem;
+    margin: 0 auto;
+    background-color: white;
+    color: $DarkShade-75;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 9.723%;
+    padding-right: 9.723%;
 }

@@ -1,6 +1,7 @@
-mixin colorCard(name, description)
+
+mixin colorCard(name, description, color)
     .color-card
-        div(class="color-card_palette" style=`background-color:${description}`)
-    .color-card__info
-        h2.color-card__info_heading #{name}
-        p.color-card__info_description #{description}
+        div(class="color-card_palette" style=`background-color:${color}`)
+        .color-card__info
+            h2.color-card__info_heading #{name}
+            p.color-card__info_description #{description}

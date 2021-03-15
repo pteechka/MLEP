@@ -38,6 +38,17 @@ module.exports = {
           options: {
             name: '[path][name].[ext]'
           }
+        },{
+          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: `${PATHS.assets}fonts/`
+              }
+            }
+          ]
         },
         {
           test: /\.scss$/,
@@ -49,6 +60,10 @@ module.exports = {
               options: { sourceMap: true }
             }, 
             {
+              loader: 'sass-loader',
+              options: { sourceMap: true }
+            }, 
+            {
               loader: 'postcss-loader',
               options: { 
                 sourceMap: true, 
@@ -56,10 +71,6 @@ module.exports = {
                   config: "./postcss.config.js"
                 }
               }
-            }, 
-            {
-              loader: 'sass-loader',
-              options: { sourceMap: true }
             }
           ]
         },
@@ -70,6 +81,10 @@ module.exports = {
             MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
+              options: { sourceMap: true }
+            }, 
+            {
+              loader: 'sass-loader',
               options: { sourceMap: true }
             }, 
             {

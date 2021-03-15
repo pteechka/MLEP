@@ -1,0 +1,30 @@
+@import "../../../scss/colors.scss";
+
+.color-card {
+    display: flex;
+    margin: 0 auto;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.color-card_palette {
+    height: 70px;
+    width: 70px;
+    border-radius: 6px;
+}
+.color-card__info {
+    color: $DarkShade-100;
+    min-width: 200px;
+    padding-left: 33px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.color-card__info_heading {
+    font-size: 1.188rem;
+}
+.color-card__info_description {
+    font-size: 1.188rem;
+    margin: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+}
